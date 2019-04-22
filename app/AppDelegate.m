@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "voucher_swap.h"
-#import "kernel_call.h"
+extern int unjail(void);
 #import "log.h"
 
 @interface AppDelegate ()
@@ -21,6 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	voucher_swap();
+	unjail();
+#if 0
 	bool ok = kernel_call_init();
 	if (!ok) {
 		exit(1);
@@ -36,6 +38,7 @@
 			0x4545454545454545,
 			0x4646464646464646);
 	kernel_call_deinit();
+#endif
 	return YES;
 }
 
